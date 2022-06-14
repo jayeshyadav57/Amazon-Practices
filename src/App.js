@@ -8,7 +8,11 @@ import Shirt from "./pages/shirt/Shirt";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 function App() {
+  //This is for searching and showing result in according to searching
   let [type, setType] = useState("")
+
+  //It store the count of objects/product which are added to the cart
+  let [cartCount, setCartCount] = useState([])
   return (
     <BrowserRouter>
       <Header setType={setType} />

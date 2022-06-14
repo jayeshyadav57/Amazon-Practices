@@ -1,14 +1,21 @@
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 .card-container{
     padding: 10px;
     margin: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 250px;
-    height: 450px;
+    height: 500px;
     line-height: 30px;
     font-size: 14px;
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 5px 5px 10px gray;
+    position: relative;
+    z-index: -1;
 }
 .card-image{
     display: flex;
@@ -41,8 +48,13 @@
 .card-description{
     text-align: center;
 }
-.cardContainer {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+
+.addToCart{
+    position: absolute;
+    width:230px;
+    border-radius: 10px;
+    background-color: rgb(254, 216, 21);
+    padding: 10px;
+    text-align: center;
+    bottom: 25px;
 }
