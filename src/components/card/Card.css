@@ -56,4 +56,10 @@
     padding: 10px;
     text-align: center;
     bottom: 25px;
+    cursor: pointer;
+    
+}
+.addToCart:hover{
+    background-color: rgb(212, 184, 39);
+    transform: translateY(-1px);
 }

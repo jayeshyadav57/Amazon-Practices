@@ -5,6 +5,7 @@ import Header from "./components/header/Header";
 import SubHeader from "./components/subheader/SubHeader";
 import Pants from "./pages/pants/Pants";
 import Shirt from "./pages/shirt/Shirt";
+import Cart from "./pages/cart/Cart"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 function App() {
@@ -12,15 +13,37 @@ function App() {
   let [type, setType] = useState("")
 
   //It store the count of objects/product which are added to the cart
-  let [cartCount, setCartCount] = useState([])
+  let [cartObj, setCartObj] = useState([])
+
+  function getObjects(product) {
+    //whea we click then i have to check is that object is already present or not.
+    const isProductPresent = cartObj.find(element => element.id === product.id);
+
+    //true means present in cart and if already present then simply increment quatity of that product. 
+    if (isProductPresent) {
+      if (product.stock > product.quantity) {
+        cartObj.map((ele) => {
+          if (ele.id === product.id) {
+            ele.quantity++;
+          }
+          return 0;
+        })
+      }
+    }
+    // Add that product with quantity = 1 in cartObj array of objects
+    else {
+      setCartObj([...cartObj, { ...product, quantity: 1 }]);
+    }
+  }
   return (
     <BrowserRouter>
-      <Header setType={setType} />
+      <Header info={{ setType, cartObj }} />
       <SubHeader />
       <Routes>
-        <Route path="/" element={<Card type={type} />} />
-        <Route path="/pants" element={<Pants />} />
-        <Route path="/shirt" element={<Shirt />} />
+        <Route path="/" element={<Card info={{ type, getObjects }} />} />
+        <Route path="/pants" element={<Pants getObjects={getObjects} />} />
+        <Route path="/shirt" element={<Shirt getObjects={getObjects} />} />
+        <Route path="/cart" element={<Cart cartObj={cartObj} />} />
       </Routes>
     </BrowserRouter>
   );

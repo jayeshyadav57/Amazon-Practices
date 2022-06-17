@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
-export default function Header({ setType}) {
+export default function Header({ info: { setType, cartObj } }) {
   function searchValue(e) {
     setType(e.target.value);
   }
@@ -20,10 +20,13 @@ export default function Header({ setType}) {
           onChange={searchValue}
         />
       </div>
-      <div className="cart-container">
-        <img src="/images/cart.jpg" alt="cart-images" />
-        <div className="cart-count">0</div>
-      </div>
+      <Link to="/cart">
+        <div className="cart-container">
+          <img src="/images/cart.jpg" alt="cart-images" />
+          <div className="cart-count">{cartObj.length}</div>
+        </div>
+      </Link>
+
     </div>
   );
 }

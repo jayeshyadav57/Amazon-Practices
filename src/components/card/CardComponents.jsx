@@ -1,7 +1,8 @@
 import React from "react";
 import "./Card.css";
-export default function CardComponents({ info }) {
-  let cards = info.map((ele) => {
+export default function CardComponents({ info: { Objects, getObjects } }) {
+
+  let cards = Objects.map((ele) => {
     return (
       <div className="card-container" key={ele.id}>
         <div className="card-image">
@@ -14,7 +15,7 @@ export default function CardComponents({ info }) {
           {ele.stock}
         </div>
         <div className="card-price">{ele.price}</div>
-        <div onClick={() => console.log("Clicked")} className="addToCart">Add to Cart</div>
+        <div onClick={() => getObjects(ele)} className="addToCart">Add to Cart</div>
       </div>
     );
   });
