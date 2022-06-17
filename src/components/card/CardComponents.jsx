@@ -14,7 +14,7 @@ export default function CardComponents({ info }) {
           {ele.stock}
         </div>
         <div className="card-price">{ele.price}</div>
-        <div className="addToCart">Add to Cart</div>
+        <div onClick={() => console.log("Clicked")} className="addToCart">Add to Cart</div>
       </div>
     );
   });
